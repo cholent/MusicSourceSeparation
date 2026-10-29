@@ -6,7 +6,7 @@ The design is based on the configuration studied in:
 
 > D. Kostrzewa, M. Kondziolka, R. Brzeski, J. Abimbola, P. Benecki, *How Far Can a U-Net Go? An Empirical Analysis of Music Source Separation Performance*, Applied Sciences 16(5):2195, 2026. https://doi.org/10.3390/app16052195
 
-Project developed by Aldo Pinelli, Martina Luyten, Hamin Jang and Alessandro Cupo.
+Project developed by Aldo Pinelli, Martina Luyten, Hamin Jang and Alessandro Cupini.
 
 ---
 
@@ -64,18 +64,19 @@ Metrics: **SDR, SIR, SAR** (BSS Eval) computed with `mir_eval.separation.bss_eva
 
 - estimates and references are compared **in mono at 10,880 Hz** (references are downmixed and resampled to match the model output)
 - metrics are computed on **1-second windows**; silent reference windows are skipped
-- statistics (median, mean, standard deviation) are computed over **all windows of all 50 test tracks** pooled together
+- the reported value is the **median over all windows of all 50 test tracks** pooled together
 
-### Results (MUSDB18 test set, 50 tracks, dB)
 
-| Source | SDR Mdn | SDR M | SDR SD | SIR Mdn | SIR M | SIR SD | SAR Mdn | SAR M | SAR SD |
-|---|---|---|---|---|---|---|---|---|---|
-| Vocals | 5.51 | 1.73 | 13.06 | 8.83 | 6.29 | 11.73 | 9.44 | 7.51 | 8.49 |
-| Drums  | 6.29 | 5.32 | 7.03  | 10.73 | 9.92 | 7.54 | 9.01 | 8.73 | 5.30 |
-| Bass   | 4.33 | 2.21 | 10.63 | 7.46 | 5.61 | 10.43 | 9.20 | 8.68 | 6.61 |
-| Other  | 2.81 | 2.63 | 6.50  | 5.44 | 5.46 | 7.20 | 8.06 | 8.59 | 5.55 |
+### Results (MUSDB18 test set, 50 tracks, median values in dB)
 
-Drums and vocals, the most prominent sources in a typical mix, are separated best. The gap between median and mean (and the large SD), especially for vocals and bass, comes from windows where the source is very quiet or almost absent, which produce strongly negative scores.
+| Source | SDR | SIR | SAR |
+|---|---|---|---|
+| Vocals | 5.51 | 8.83 | 9.44 |
+| Drums  | 6.29 | 10.73 | 9.01 |
+| Bass   | 4.33 | 7.46 | 9.20 |
+| Other  | 2.81 | 5.44 | 8.06 |
+
+Drums and vocals, the most prominent sources in a typical mix, are separated best.
 
 ---
 
